@@ -1,0 +1,271 @@
+body {
+    background-color: #f6f6f6;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.8rem;
+    color: #414141;
+    text-shadow: .3px .3px .4px rgba(0, 0, 0, .2);
+    margin: 0;
+}
+
+::-webkit-scrollbar {width: 10px;}
+::-webkit-scrollbar-thumb {background-color: #8c9df7;}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 12px;
+}
+
+.row {grid-column: span 12;}
+
+#chartContainer, #chartContainer2 {
+    grid-row: 5;
+    grid-column: span 6;
+    width: 92%;
+    height: 300px;
+    margin: 1rem auto;
+    font-family: "Roboto", sans-serif;
+    box-shadow: .2px 2px 12px rgba(0, 0, 0, .2);    
+}
+
+.canvasjs-chart-credit {display: none;}
+
+nav {
+    grid-column: span 12;
+    width: 100%;
+    max-width: 100%;
+    padding: .5rem 0;
+    font-weight: 300;
+    color: #f3f3f3;
+    text-align: center;
+    background-color: #7986cb;
+    border-bottom: 1px solid #E3E7EB;
+    
+}
+
+nav p {user-select: none; margin: 0;}
+
+#nhietdo, #doam, #status, #control, #setTime {
+    grid-column: span 2;
+    padding: 1rem;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: .2px 2px 12px rgba(0, 0, 0, .2);
+    text-align: center;
+}
+
+#nhietdo, #doam {
+    padding: .4rem!important;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    user-select: none;
+}
+
+#nhietdo { 
+    margin-left: 1.8rem;
+    color: tomato;
+    text-align: center;
+}
+
+#doam {
+    margin-left: 1.8rem;
+    color:#66bb6a;
+    grid-row: 3;
+}
+
+#nhietdo span, #doam span {
+    font-size: 25px;
+    font-weight: 300;
+}
+
+#nhietdo p, #doam p {
+    margin: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+
+#nhietdo div, #doam div {
+    border: 2px dotted tomato;
+    box-sizing: border-box;
+    padding-top: 1.3rem;
+    width: 96px; height: 96px;
+    border-radius: 50%;
+}
+
+#doam div { border-color: mediumseagreen!important; }
+
+#status, #control {
+    grid-row: span 2;
+    padding: 1rem;
+}
+
+#status {
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+}
+
+#status .icon-group:nth-child(1).active {color: tomato;}
+#status .icon-group:nth-child(2).active {color: mediumseagreen;}
+#status .icon-group:nth-child(3).active {color: orange;}
+#status .icon-group:nth-child(4).active {color: dodgerblue;}
+
+#status ion-icon {font-size: 38px; display: inline-block;}
+#status span {
+    font-size: 13px; 
+    display: block;
+    text-align: center; 
+    margin-top: .4rem;
+}
+
+#control {
+    grid-column: span 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+}
+
+#control .button-group {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    justify-items: center;
+    align-items: center;
+}
+
+.button-group p {margin: 0; display: inline-block; user-select: none; text-align: left;}
+
+.button-group input[type="checkbox"] {
+    position: relative;
+    cursor: pointer;
+    width: 44px;
+    height: 22px;
+    -webkit-appearance: none;
+    background: #f4f4f4;
+    outline: none;
+    border-radius: 30px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+}
+
+.button-group input:checked[type="checkbox"] {
+    background-image: linear-gradient(120deg, #d6b4f5 0%, #96bfe9 100%);
+}
+
+.button-group input[type="checkbox"]:before {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    transition: .2s;
+    border-radius: 50%;
+    position: absolute;
+    background: #fff;
+    transform: scale(1.02);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+
+.button-group input:checked[type="checkbox"]:before {
+    left: 22px;
+}
+
+button {
+    border: none;
+    background-image: linear-gradient(120deg, #d6b4f5 0%, #96bfe9 100%);
+    border-radius: 2px;
+    padding: .54rem;
+    font-size: 15px;
+    color: white;
+    outline: none;
+    transition: .2s ease;
+    box-shadow: .1px .1px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    box-shadow: .2px 2px 10px rgba(0, 0, 0, 0.26);
+    background-image: linear-gradient(120deg, #d0abf1 0%, #86b6e6 100%);
+}
+
+#setTime {
+    grid-column: span 3;
+    grid-row: span 2;
+    margin-right: 1.6rem;
+}
+
+#setTime p {
+    grid-column: span 2;
+    margin: 0;
+}
+
+#setTime small {font-size: 13px; font-weight: 300; display: block; margin-bottom: 1rem; color: #ad7bdb; letter-spacing: .5px;}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: giá trị;
+    -o-appearance: giá trị;
+    margin: 0; 
+}
+
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+#setTime input[type="number"] {
+    font-family: 'Share Tech Mono', monospace;
+    padding: 0 .4rem;
+    margin: 0 10px;
+    display: inline-block;
+    width: 25px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid dodgerblue;
+    color: #ad7bdb;
+    outline: none;
+}
+
+#setTime button {
+    display: block;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+#setTime p, #setTime small, #setTime span {user-select: none;}
+
+#batdau {margin-bottom: 1rem;}
+
+@media (max-width: 992px) {
+    #chartContainer, #chartContainer2 {
+        width: 90%;
+        grid-column: span 12;
+        grid-row: 8;
+    }
+
+    #chartContainer2 {grid-row: 7;}
+    #doam {grid-row: 6;}
+    #nhietdo {grid-row: 5;}
+    #setTime {grid-row: 4;}
+    #control {grid-row: 3;}
+    #status {grid-row: 2;}
+    
+    #nhietdo, #doam {
+        padding: 1rem 0 !important;
+    }
+
+    .button-group p {font-weight: 300; font-size: .86rem;}
+
+    #nhietdo, #doam, #status, #control, #setTime {
+        grid-column: span 12;
+        margin: 0 .8rem;
+    }
+
+    #status {row-gap: 2rem;}
+}
+
+@media (max-width: 576px) {
+    .button-group p {margin-right: 14px;}
+}

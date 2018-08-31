@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/static/chart.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href='/static/img/favicon.png' type='image/x-icon' rel='shortcut icon'/>
+    <title>Homepage</title>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav><p>WELCOME TO T2T HOME</p></nav>
+        <div id="chartContainer"></div>
+        <div id="chartContainer2"></div>
+
+        <div id="nhietdo">
+            <div>
+                <p>Nhiệt độ</p>
+                <span id="temperature">26</span><span>&deg;C</span>
+            </div>
+        </div>
+
+        <div id="doam">
+            <div>
+                <p>Độ ẩm</p>
+                <span id="humidity">80</span><span>&percnt;</span>
+            </div>
+        </div>
+
+        <div id="status">
+            <div class="icon-group" id="fire">
+                <ion-icon name="bonfire"></ion-icon>
+                <span>Cháy</span>
+            </div>
+            <div class="icon-group" id="fan">
+                <ion-icon name="aperture"></ion-icon>
+                <span>Quạt</span>    
+            </div>
+            <div class="icon-group" id="thief">
+                <ion-icon name="walk"></ion-icon>
+                <span>Trộm</span>
+            </div>
+            <div class="icon-group" id="rain">
+                <ion-icon name="rainy"></ion-icon>
+                <span>Mưa</span>
+            </div>
+        </div>
+
+        <div id="control">
+            <div class="button-group">
+                <p>Sân</p>
+                <input type="checkbox" name="" id="san">
+            </div>
+            <div class="button-group">
+                <p>Phòng Ngủ 1</p>
+                <input type="checkbox" name="" id="ngu1">
+            </div>
+            <div class="button-group">
+                <p>Nhà Bếp</p>
+                <input type="checkbox" name="" id="bep">
+            </div>
+            <div class="button-group">
+                <p>Phòng Ngủ 2</p>
+                <input type="checkbox" name="" id="ngu2">
+            </div>
+            <div class="button-group">
+                <p>Điều hòa</p>
+                <input type="checkbox" name="" id="quat">
+            </div>
+            <div class="button-group">
+                <p>Phòng Chung</p>
+                <input type="checkbox" name="" id="chung">
+            </div>
+            <div class="button-group">
+                <p>Cảnh báo</p>
+                <input type="checkbox" name="" id="cap">
+            </div>
+            <div class="button-group">
+                <p>Phòng khách</p>
+                <input type="checkbox" name="" id="khach">
+            </div>
+            <div class="button-group">
+                <p>Cửa chính</p>
+                <input type="checkbox" name="" id="cua">
+            </div>
+            <div class="button-group">
+                <p>LCD Screen</p>
+                <input type="checkbox" name="" id="lcd">
+            </div>
+        </div>
+
+        <div id="setTime">
+            <p>Hẹn giờ cảnh báo</p>
+            <small id="timeSet"></small>    
+            <div id="batdau">
+                <span>Bật</span>
+                <input type="number" name="" class="setHour" id="sgio"><span>giờ</span>
+                <input type="number" name="" class="setMinute" id="sphut"><span>phút</span>
+            </div>
+            <div id="ketthuc">
+                <span>Tắt</span>
+                <input type="number" name="" class="setHour" id="egio"><span>giờ</span>
+                <input type="number" name="" class="setMinute" id="ephut"><span>phút</span>
+                </div>
+            
+            <button id="set">Đồng ý</button>
+        </div>
+
+    </div>
+</body>
+</html>
