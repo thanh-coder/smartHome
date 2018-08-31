@@ -1,17 +1,26 @@
-var express = require("express");// gọi module express
-var app = express(); // khởi tạo express
+const express = require("express");// gọi module express
+const app = express(); // khởi tạo express
+
 app.use("/static",express.static("public"));// sử dụng public folder lưu file
-app.set("view engine","ejs"); // chuyển trang web
-app.set("views","./views"); // trang web trong thư mục views
-var server = require("http").Server(app); // tạo server
-var io = require("socket.io")(server); // tạo socket io server
+app.set("view engine","pug"); // Chế độ đọc Template Engine
+app.set("views","./views"); // Thiết lập nơi get Views
+
+const server = require("http").Server(app); // tạo server
+const io = require("socket.io")(server); // tạo socket io server
 server.listen(3000); // mở port 3000
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/arduino');
+
+//Routes
+const routes = require('./routes/index.route');
+app.use('/', routes);
 
 // lấy danh sách các phần từ có class active
 var listActive = [];
 var listMess = [];
 var time;
-io.on("connection",function(socket){
+io.on("connection", function(socket){
     // check client kết nối thì báo
     console.log("Client connected");
     /****************** Node MCU 1 **********************/
@@ -113,8 +122,4 @@ io.on("connection",function(socket){
         io.sockets.emit("allTime",data);
     });
     
-});
-//render ra trang chủ khi client web kết nối
-app.get("/",function(req,res){
-    res.render("smarthome");
 });

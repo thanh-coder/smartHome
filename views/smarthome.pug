@@ -1,0 +1,90 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  script(src='/static/chart.js')
+  script(src='https://canvasjs.com/assets/script/canvasjs.min.js')
+  script(src='https://unpkg.com/ionicons@4.4.2/dist/ionicons.js')
+  link(rel='stylesheet' href='/static/style.css')
+  link(href='/static/img/favicon.png' type='image/x-icon' rel='shortcut icon')
+  script(src='socket.io/socket.io.js')
+  script(src='/static/script.js')
+  title Homepage
+.container
+  nav
+    p WELCOME TO T2T HOME
+  #chartContainer
+    span= chartsData[0].data
+  #chartContainer2
+    span= chartsData[1].data
+  #nhietdo
+    div
+      p Nhiệt độ
+      span#temperature 26
+      span &deg;C
+  #doam
+    div
+      p Độ ẩm
+      span#humidity 80
+      span &percnt;
+  #status
+    #fire.icon-group
+      ion-icon(name='bonfire')
+      span Cháy
+    #fan.icon-group
+      ion-icon(name='aperture')
+      span Quạt
+    #thief.icon-group
+      ion-icon(name='walk')
+      span Trộm
+    #rain.icon-group
+      ion-icon(name='rainy')
+      span Mưa
+  #control
+    .button-group
+      p Sân
+      input#san(type='checkbox' name='')
+    .button-group
+      p Phòng ngủ 1
+      input#ngu1(type='checkbox' name='')
+    .button-group
+      p Nhà bếp
+      input#bep(type='checkbox' name='')
+    .button-group
+      p Phòng ngủ 2
+      input#ngu2(type='checkbox' name='')
+    .button-group
+      p Điều hòa
+      input#quat(type='checkbox' name='')
+    .button-group
+      p Phòng Chung
+      input#chung(type='checkbox' name='')
+    .button-group
+      p Cảnh báo
+      input#cap(type='checkbox' name='')
+    .button-group
+      p Phòng khách
+      input#khach(type='checkbox' name='')
+    .button-group
+      p Cửa chính
+      input#cua(type='checkbox' name='')
+    .button-group
+      p LCD Screen
+      input#lcd(type='checkbox' name='')
+  #setTime
+    p Hẹn giờ cảnh báo
+    small#timeSet
+    #batdau
+      span Bật
+      input#sgio.setHour(type='number' name='')
+      span giờ
+      input#sphut.setMinute(type='number' name='')
+      span phút
+    #ketthuc
+      span Tắt
+      input#egio.setHour(type='number' name='')
+      span giờ
+      input#ephut.setMinute(type='number' name='')
+      span phút
+    button#set Đồng ý

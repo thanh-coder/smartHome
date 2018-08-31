@@ -1,4 +1,4 @@
-var socket = io("http://192.168.1.200:3000");
+var socket = io("http://localhost:3000");
 var sycnTimeValue1;
 var sycnTimeValue2;
 //xử lý đồng bộ tín hiệu điều khiến client web mới kết nối id+on

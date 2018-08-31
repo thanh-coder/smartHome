@@ -1,11 +1,26 @@
 {
   "name": "nodemcu",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hệ thống nhà thông minh Real Time với Socket.io",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "tientran",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pug": "^2.0.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.12",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmint3010/smartHome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lmint3010/smartHome/issues"
+  },
+  "homepage": "https://github.com/lmint3010/smartHome#readme"
 }

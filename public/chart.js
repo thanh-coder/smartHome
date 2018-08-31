@@ -1,6 +1,11 @@
 // bieu do 1
 window.onload = function () {
-    var dataPoints = [{ y: 10 }, { y: 13 }, { y: 18 }, { y: 20 }, { y: 17 }];
+    var dataPoints = [], dataPoints2 = [];
+
+    const fakeTemp = document.querySelector('#chartContainer span').textContent.split(',');
+    for(i of fakeTemp) {
+        dataPoints.push({y: Number(i)});
+    }
     var chart = new CanvasJS.Chart("chartContainer", {
         title: {
             text: "Dynamic Data",
@@ -15,7 +20,10 @@ window.onload = function () {
         ]
     });
 
-    var dataPoints2 = [{ y: 10 }, { y: 13 }, { y: 18 }, { y: 20 }, { y: 17 }];
+    const fakeHumi = document.querySelector('#chartContainer2 span').textContent.split(',');
+    for(j of fakeHumi) {
+        dataPoints2.push({y: Number(j)});
+    }
     var chart2 = new CanvasJS.Chart("chartContainer2", {
         title: {
             text: "Dynamic Data",
