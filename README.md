@@ -16,6 +16,7 @@ Ví dụ máy A bật công tắc đèn 1 thì các thiết bị còn lại cũn
 * Passport.js
 
 Bạn cần **cd** đến thư mục cần cài đặt và dùng lệnh **Terminal** để cài đặt các gói **NPM**
+
 **Installation NPM:** `npm install`
 
 **Đây là sản phẩm nghiêng cứu**
