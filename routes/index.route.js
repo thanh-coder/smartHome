@@ -1,7 +1,15 @@
 const router = require('express').Router();
+const passport = require('passport');
 const controller = require('../controller/index.controller');
 
 router.route('/')
-  .get(controller.index);
+  .get(controller.login)
+  .post(passport.authenticate('local', { failureRedirect: '/', successRedirect: '/admin' }));
+
+router.route('/admin')
+  .get(controller.admin);
+
+router.route('/logout')
+  .get(controller.logout);
 
 module.exports = router;

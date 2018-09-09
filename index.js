@@ -1,20 +1,48 @@
-const express = require("express");// gọi module express
-const app = express(); // khởi tạo express
-
-app.use("/static",express.static("public"));// sử dụng public folder lưu file
-app.set("view engine","pug"); // Chế độ đọc Template Engine
-app.set("views","./views"); // Thiết lập nơi get Views
-
-const server = require("http").Server(app); // tạo server
-const io = require("socket.io")(server); // tạo socket io server
-server.listen(3000); // mở port 3000
-
+const express = require("express");
+const session = require('express-session');
+const app = express();
+const path = require('path');
+const port = process.env.PORT || 3000;
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
+
+const routes = require('./routes/index.route');
+
+const userModel = require('./model/user.model');
 mongoose.connect('mongodb://localhost/arduino');
 
-//Routes
-const routes = require('./routes/index.route');
+app.set("view engine","pug");
+app.set("views","./views");
+
+app.use(session( {secret: 'lmintsecret', resave: true, saveUninitialized: false} ));
+app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', routes);
+
+passport.use(new localStrategy(
+  async (username, password, done) => {
+    const user = await userModel.findOne({ username: username });
+    if(user && user.password == password) { return done(null, user) }
+    else { return done(null, false) }       
+  }
+));
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  userModel.findById(id)
+    .then((user) => { done(null, user) })
+    .catch((err) => console.log(err));
+});
+
+const server = require("http").Server(app); 
+const io = require("socket.io")(server);
 
 // lấy danh sách các phần từ có class active
 var listActive = [];
@@ -121,5 +149,6 @@ io.on("connection", function(socket){
     socket.on("allTime",function(data){
         io.sockets.emit("allTime",data);
     });
-    
 });
+
+app.listen(port);

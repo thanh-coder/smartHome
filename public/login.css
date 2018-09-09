@@ -1,0 +1,76 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../static/img/home.jpeg');
+  background-size: cover;
+  background-position: center center;
+  font-family: "Roboto", sans-serif;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.86);
+  padding: 0rem 2rem 1rem 2rem;
+  border-radius: .3rem;
+}
+
+h2 {
+  font-size: 28px;
+  color: dodgerblue;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+input {
+  display: block;
+  margin: 1rem 0 1.6rem;
+  background-color: transparent;
+  padding: 12px 0 6px 0;
+  font-size: 15px;
+  outline: none;
+  color: #445;
+  border: none;
+  border-bottom: 1px solid dodgerblue;
+}
+
+input + label {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  color: #555;
+  font-size: 16px;
+  font-weight: 300;
+  transition: .26s ease;
+}
+
+input:focus + label, input:valid + label {
+  top: -14px;
+  left: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: dodgerblue;
+}
+
+button[type=submit] {
+  border: none;
+  margin: 1rem auto 0 auto;
+  padding: 8px 16px;
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  transition: .126s ease;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color: dodgerblue;
+  color: white;
+}
