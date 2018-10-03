@@ -4,6 +4,7 @@
   "description": "Hệ thống nhà thông minh Real Time với Socket.io",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "tientran",
