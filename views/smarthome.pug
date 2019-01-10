@@ -1,91 +1,131 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  script(src='/static/chart.js')
-  script(src='https://canvasjs.com/assets/script/canvasjs.min.js')
-  script(src='https://unpkg.com/ionicons@4.4.2/dist/ionicons.js')
-  link(rel='stylesheet' href='/static/style.css')
-  link(href='/static/img/favicon.png' type='image/x-icon' rel='shortcut icon')
-  script(src='socket.io/socket.io.js')
-  script(src='/static/script.js')
-  title Homepage
-.container
-  nav
-    p WELCOME TO T2T HOME
-    a(href="/logout") Log Out
-  #chartContainer
-    //- span= data[0].data
-  #chartContainer2
-    //- span= data[1].data
-  #nhietdo
-    div
-      p Nhiệt độ
-      span#temperature 26
-      span &deg;C
-  #doam
-    div
-      p Độ ẩm
-      span#humidity 80
-      span &percnt;
-  #status
-    #fire.icon-group
-      ion-icon(name='bonfire')
-      span Cháy
-    #fan.icon-group
-      ion-icon(name='aperture')
-      span Quạt
-    #thief.icon-group
-      ion-icon(name='walk')
-      span Trộm
-    #rain.icon-group
-      ion-icon(name='rainy')
-      span Mưa
-  #control
-    .button-group
-      p Sân
-      input#san(type='checkbox' name='')
-    .button-group
-      p Phòng ngủ 1
-      input#ngu1(type='checkbox' name='')
-    .button-group
-      p Nhà bếp
-      input#bep(type='checkbox' name='')
-    .button-group
-      p Phòng ngủ 2
-      input#ngu2(type='checkbox' name='')
-    .button-group
-      p Điều hòa
-      input#quat(type='checkbox' name='')
-    .button-group
-      p Phòng Chung
-      input#chung(type='checkbox' name='')
-    .button-group
-      p Cảnh báo
-      input#cap(type='checkbox' name='')
-    .button-group
-      p Phòng khách
-      input#khach(type='checkbox' name='')
-    .button-group
-      p Cửa chính
-      input#cua(type='checkbox' name='')
-    .button-group
-      p LCD Screen
-      input#lcd(type='checkbox' name='')
-  #setTime
-    p Hẹn giờ cảnh báo
-    small#timeSet
-    #batdau
-      span Bật
-      input#sgio.setHour(type='number' name='')
-      span giờ
-      input#sphut.setMinute(type='number' name='')
-      span phút
-    #ketthuc
-      span Tắt
-      input#egio.setHour(type='number' name='')
-      span giờ
-      input#ephut.setMinute(type='number' name='')
-      span phút
-    button#set Đồng ý
+html(lang="en")
+
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    //- script(src='/static/chart.js')
+    script(src='https://canvasjs.com/assets/script/canvasjs.min.js')
+    script(src='https://unpkg.com/ionicons@4.4.2/dist/ionicons.js')
+    link(rel='stylesheet' href='static/style.css')
+    link(rel='stylesheet' href='static/css/main.css')
+
+    link(href='/static/img/favicon.png' type='image/x-icon' rel='shortcut icon')
+    script(src='socket.io/socket.io.js')
+    script(src='/static/script.js')
+    //- link(rel="stylesheet", href="/static/css/bootstrap.min.css") 
+    //- link(rel="stylesheet", href="/static/js/bootstrap.min.css") 
+    script(src='/static//js/jquery-3.2.1.min.js')
+
+    //- script(src='/static/script.js')
+
+    //- script(src='/static/js/chart.js')
+    //- script(src='/static/js/chart1.js')
+    //- script(type='text/javascript' src='/static/js/chart_config.js')
+    //- script(type='text/javascript' src='/static/js/chart_config2.js')
+    //- script(type='text/javascript' src='/static/js/plot.js')
+    //- script(type='text/javascript' src='/static/js/smarthome.js')
+    script.
+      var socket = io("http://localhost:3000");
+    title Homepage
+  body  
+    .container
+      nav
+        p WELCOME TO SAMRT HOME
+        a(href="/logout") Log Out
+      #chartContainer
+        .loading.text-center
+          img(src='/static/img/loading.gif')
+        .wrap
+          canvas#myChart(width="440px" height="210px")
+
+        //- span#timeToRender
+        //- span= data[0].data
+      #chartContainer2
+        .loading.text-center
+          img(src='static/img/loading.gif' style="color:blue")
+        .wrap
+          canvas#myChart2(width="440px" height="210px")
+
+        //- span#timeToRender2
+        //- span= data[1].data
+      #nhietdo
+        div
+          p Nhiệt độ
+          span#temperature 26
+          span &deg;C
+      #doam
+        div
+          p Độ ẩm
+          span#humidity 80
+          span &percnt;
+      #status
+        #fire.icon-group
+          a.chay
+           ion-icon(name='bonfire')
+          span Cháy
+        #fan.icon-group
+          a.quat
+           ion-icon(name='aperture')
+          span Quạt
+        #thief.icon-group
+          a.trom
+           ion-icon(name='walk')
+          
+          span Trộm
+        #flight.icon-group
+          a.den
+           ion-icon(name='bulb')
+          span Đèn
+      #control
+        .button-group
+          p.textden tắt đèn
+          input#san(type='checkbox' name='')
+        .button-group
+          p.textquat tắt quạt
+          input#ngu1(type='checkbox' name='')
+        .button-group
+          p.textpir Tắt chống trộm
+          input#bep(type='checkbox' name='')
+        .button-group
+          p.textgas không gas
+          input#ngu2(type='checkbox' name='')
+        .button-group(style='opacity:0.5')
+          p Điều hòa
+          input#quat(type='checkbox' name='' style='opacity:0.5')
+        .button-group(style='opacity:0.5')
+          p Phòng Chung
+          input#chung(type='checkbox' name='' style='opacity:0.5' )
+        .button-group(style='opacity:0.5')
+          p Cảnh báo
+          input#cap(type='checkbox' name='' style='opacity:0.5')
+        .button-group(style='opacity:0.5')
+          p Phòng khách
+          input#khach(type='checkbox' name='' style='opacity:0.5')
+        .button-group(style='opacity:0.5')
+          p Cửa chính
+          input#cua(type='checkbox' name='' style='opacity:0.5')
+        .button-group(style='opacity:0.5')
+          p LCD Screen
+          input#lcd(type='checkbox' name='' style='opacity:0.5')
+      #setTime
+        p Hẹn giờ cho cá ăn
+        small#timeSet
+        #batdau
+          span Bật
+          input#sgio.setHour(type='number' name='')
+          span giờ
+          input#sphut.setMinute(type='number' name='')
+          span phút
+        #ketthuc
+          span Tắt
+          input#egio.setHour(type='number' name='')
+          span giờ
+          input#ephut.setMinute(type='number' name='')
+          span phút
+        button#set Đồng ý
+    
+    script(type='text/javascript' src='/static/js/chart_config2.js')
+    script(type='text/javascript' src='/static/js/plot.js')
+    script(type='text/javascript' src='/static/js/smarthome.js')

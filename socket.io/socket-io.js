@@ -9,8 +9,8 @@ module.exports = function (server) {
     // check client kết nối thì báo
     console.log("Client connected");
     /****************** Node MCU 1 **********************/
-    io.sockets.emit("sync", listActive);
-    io.sockets.emit("messFan", listMess);
+    // io.sockets.emit("sync", listActive);
+    // io.sockets.emit("messFan", listMess);
     // nhận tín hiệu từ web client sau đó phát về arduino
     // đồng thời client web cũng lấy xử lý đồng bộ
     socket.on("s-on", function (data) {
@@ -40,13 +40,26 @@ module.exports = function (server) {
       if (listMess.indexOf("fan") == -1) {
         listMess.push(data.sfan);
       }
-
     });
+
+// tắt tín hiệu quạt
     socket.on("fan-auto-off", function (data) {
       socket.broadcast.emit("fan-off", data);
       listMess.splice(listMess.indexOf("fan"), 1);
     });
+ 
+    //nhan tin hieu den on-off
+    socket.on("flight-auto-on", function (data) {
+      socket.broadcast.emit("flight-on", data);
+      if (listMess.indexOf("flight") == -1) {
+        listMess.push(data.sflight);
+      }    });
+ 
 
+    socket.on("flight-auto-off", function (data) {
+      socket.broadcast.emit("flight-off", data);
+      listMess.splice(listMess.indexOf("flight"), 1);
+    });
 
     // nhận sự kiện từ arduino 
     socket.on("test", function (data) {

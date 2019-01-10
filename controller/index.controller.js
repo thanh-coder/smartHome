@@ -9,13 +9,19 @@ exports.login = async (req, res) => {
   }
 }
 
+// exports.admin = async (req, res) => {
+//   const chartsData = await fakeDataModel.find({});
+//   if(req.isAuthenticated()) {
+//     res.render('smarthome', {data: chartsData});
+//   } else {
+//     res.redirect('/');
+//   }
+// }
+
 exports.admin = async (req, res) => {
   const chartsData = await fakeDataModel.find({});
-  if(req.isAuthenticated()) {
     res.render('smarthome', {data: chartsData});
-  } else {
-    res.redirect('/');
-  }
+  
 }
 
 exports.logout = async (req, res) => {

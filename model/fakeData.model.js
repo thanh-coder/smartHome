@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
 const fakeData_Schema = new mongoose.Schema({
-  for: String,
-  data: String
+  temp: Number,
+  hum: Number,
+  date:{ type: Date, default: Date.now }
+
 });
 
-module.exports = mongoose.model('fakeData', fakeData_Schema, 'fakeData');
+module.exports = mongoose.model('fakedata', fakeData_Schema,);

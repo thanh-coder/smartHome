@@ -10,7 +10,7 @@ body {
 ::-webkit-scrollbar {width: 10px;}
 ::-webkit-scrollbar-thumb {background-color: #8c9df7;}
 
-#chartContainer span, #chartContainer2 span {display: none;}
+/* #chartContainer span, #chartContainer2 span {display: none;} */
 
 .container {
     display: grid;
@@ -28,7 +28,32 @@ body {
     margin: 1rem auto;
     font-family: "Roboto", sans-serif;
     box-shadow: .2px 2px 12px rgba(0, 0, 0, .2);    
+    position: relative;
 }
+
+#chartContainer .loading, #chartContainer2 .loading{
+    position: absolute;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    background: #fff;
+    text-align: center;
+}
+
+#chartContainer #timeToRender, #chartContainer2 #timeToRender2 {
+    position:absolute; 
+    top: 10px; 
+    font-size: 20px; 
+    font-weight: bold; 
+    background-color: #d85757;
+    padding: 0px 4px;
+    color: #ffffff;
+}
+ 
 
 .canvasjs-chart-credit {display: none;}
 
@@ -122,25 +147,96 @@ nav a:hover {
     justify-items: center;
     align-items: center;
     display: grid;
-    grid-column: span 2;
+    grid-column: span 3;
     grid-template-columns: 1fr 1fr;
+    position: relative;
+    grid-row-gap: 20px;
 }
+/* #status .icon-group:nth-child(3) {margin-bottom:5px;}
+#status .icon-group:nth-child(4) {margin-bottom:5px;} */
 
 #status .icon-group:nth-child(1).active {color: tomato;}
 #status .icon-group:nth-child(2).active {color: mediumseagreen;}
 #status .icon-group:nth-child(3).active {color: orange;}
-#status .icon-group:nth-child(4).active {color: dodgerblue;}
+/* #status .icon-group:nth-child(4).active {color: dodgerblue;} */
+#status .icon-group:nth-child(4).active {color: orange;}
 
-#status ion-icon {font-size: 38px; display: inline-block;}
+#status ion-icon {font-size: 65px; display: inline-block;}
+
+#status .icon-group .trom ion-icon[name="walk"]{
+  /* position: absolute; */
+ }
+
+ #status .icon-group .chay ion-icon[name="bonfire"]{
+     transition: 4s all ease;
+ }
+#status .icon-group .chay ion-icon[name="bonfire"].active{
+color: yellow;
+transform: scale(1.8)
+}
+
+@keyframes quatchay {
+    from   {transform: scale(1) rotate(0deg);}
+    /* 25%  {transform: scale(1.1) rotate(90deg); color: yellow;}
+    50%  {transform: scale(1.2) rotate(180deg); color: red;}
+    75%  {transform: scale(1.3) rotate(270deg); color: blue;} */
+    to {transform: scale(1.6) rotate(3600deg); color: green;}
+}
+
+#status .icon-group .quat ion-icon[name='aperture'].active{
+    color: green;
+    animation-name: quatchay;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    /* animation-delay: 1s; */
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    }
+
+    @keyframes tromchay {
+        from   {transform: scale(1);}
+        /* 25%  {transform: scale(1.1) rotate(90deg); color: yellow;}
+        50%  {transform: scale(1.2) rotate(180deg); color: red;}
+        75%  {transform: scale(1.3) rotate(270deg); color: blue;} */
+        to {transform: scale(1.8) ; color: green;}
+    }
+
+ #status .icon-group .trom ion-icon[name="walk"].active{
+    color: yellow;
+    animation-name: tromchay;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 500ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+ }
+
+ /* @keyframes den {
+   0%   {transform: scale(1);}
+    25%  {transform: scale(1.1) ; color: yellow;}
+    50%  {transform: scale(1.2) ; color:yellow;}
+    75%  {transform: scale(1.3) ; color: yellow;}
+  100% {transform: scale(1.6) ; color: yellow;}
+} */
+
+#status .icon-group .den ion-icon[name="bulb"]{
+    transition: 4s all ease;
+}
+ #status .icon-group .den ion-icon[name="bulb"].active{
+        color: yellow;
+     
+        transform: scale(1.8)
+        }    
+
 #status span {
-    font-size: 13px; 
+    font-size: 16px; 
     display: block;
     text-align: center; 
     margin-top: .4rem;
 }
 
 #control {
-    grid-column: span 5;
+    grid-column: span 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 12px;
@@ -167,8 +263,9 @@ nav a:hover {
     box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
 }
 
-.button-group input:checked[type="checkbox"] {
-    background-image: linear-gradient(120deg, #d6b4f5 0%, #96bfe9 100%);
+.button-group input[type="checkbox"]:checked {
+    /* background-image: linear-gradient(120deg, #d6b4f5 0%, #96bfe9 100%); */
+    background-color: #11db2c;
 }
 
 .button-group input[type="checkbox"]:before {
